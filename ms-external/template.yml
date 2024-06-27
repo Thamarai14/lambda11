@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: FastAPI on AWS Lambda
+
+Resources:
+  MSexternalAPIUAT:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: main.handler
+      Runtime: python3.11
+      CodeUri: .
+      MemorySize: 1024
+      Timeout: 240
+      Role: arn:aws:iam::893811649286:role/service-role/externalapi
+      Layers:
+        - arn:aws:lambda:ap-south-1:893811649286:layer:python-fastapi:2
+      
+      
